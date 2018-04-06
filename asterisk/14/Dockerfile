@@ -31,6 +31,8 @@ RUN yum update -y && \
         gsm-devel \
         speex-devel \
         gettext \
+        libcurl-devel \
+        libcurl4-dev \
         -y
 
 # Download asterisk.
@@ -47,6 +49,7 @@ RUN menuselect/menuselect \
   --disable BUILD_NATIVE \
   --enable cdr_csv \
   # --enable chan_sip \
+  --enable res_config_curl \
   --enable res_snmp \
   --enable res_http_websocket \
   --enable res_hep_pjsip \
