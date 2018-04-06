@@ -4,7 +4,7 @@ ENV build_date 2016-05-15
 
 RUN yum update -y
 RUN yum install -y epel-release
-RUN yum install git kernel-headers gcc gcc-c++ cpp ncurses ncurses-devel libxml2 libxml2-devel sqlite sqlite-devel openssl-devel newt-devel kernel-devel libuuid-devel net-snmp-devel xinetd tar jansson-devel make bzip2 gettext -y
+RUN yum install git kernel-headers gcc gcc-c++ cpp ncurses ncurses-devel libxml2 libxml2-devel sqlite sqlite-devel openssl-devel newt-devel kernel-devel libuuid-devel net-snmp-devel xinetd tar jansson-devel make bzip2 gettext libcurl-devel libcurl4-dev -y
 
 WORKDIR /tmp
 # Get pj project
@@ -33,6 +33,7 @@ RUN ./configure --libdir=/usr/lib64 1> /dev/null
 RUN make menuselect.makeopts
 RUN menuselect/menuselect \
   --disable BUILD_NATIVE \
+  --enable res_config_curl \
   --enable cdr_csv \
   --enable chan_sip \
   --enable res_snmp \
